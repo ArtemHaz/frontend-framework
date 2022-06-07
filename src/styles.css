@@ -1,0 +1,257 @@
+body {
+  background-color: #e4fde1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mainContainer {
+  display: grid;
+  grid-auto-rows: 60px 1fr;
+  grid-template-areas: 'header'
+                         'content';
+  align-items: center;
+  grid-gap: 30px;
+  height: 100%;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 40px;
+}
+
+.header__buttonGroup {
+  display: flex;
+  grid-gap: 50px;
+  align-items: end;
+}
+
+.header__button {
+  color: #456990;
+  font-style: italic;
+  margin: 0;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.header__iconGroup {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+  cursor: pointer;
+}
+
+.header__minorButton {
+  font-size: 32px;
+  font-weight: 200;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.header__mainButton {
+  position: relative;
+  font-size: 40px;
+  font-weight: 400;
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.header__animatedButton:after {
+  display: block;
+  content: "";
+  background-color: #456990;
+  height: 1px;
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+  transition: width .3s ease-in-out;
+  transform: translateX(-50%);
+  margin-bottom: 1px;
+}
+
+.header__animatedButton:hover:after {
+  width: 100%;
+}
+
+.header__mainButton--active {
+  border-bottom: 2px solid #456990;
+  padding-bottom: 0;
+}
+
+.header__minorButton--active {
+  border-bottom: 2px solid #456990;
+  padding-bottom: 2px;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  width: fit-content;
+  align-items: flex-start;
+}
+
+.todo__description {
+  font-size: 30px;
+  color: #456990;
+}
+
+.list__form--disabled {
+  display: none;
+}
+
+.list {
+  width: fit-content;
+  margin-top: 0;
+  margin-bottom: 35px;
+  padding: 0;
+}
+
+.list__element {
+  list-style-type: none;
+  height: 35px;
+}
+
+.list__elementContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.list__elementCheckbox {
+  margin-right: 20px;
+}
+
+.list__elementTask {
+  color: #456990;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.list__elementTask--done {
+  text-decoration: line-through;
+}
+
+.list__days {
+  margin-right: 20px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  background-color: #114b5f;
+  font-size: 14px;
+  color: #e4fde1;
+}
+
+
+.list__deleteButton {
+  background-color: #f45b69;
+  border-radius: 5px;
+  padding: 5px 5px;
+  border: none;
+  color: #e4fde1;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+}
+
+.list__element:hover .list__deleteButton {
+  display: inline-block;
+}
+
+.list__link {
+  text-decoration-color: #456990;
+}
+
+.todo__button {
+  min-width: 35px;
+  min-height: 35px;
+  border-radius: 5px;
+  border: none;
+  background-color: #028090;
+  color: #e4fde1;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.todo__form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 5px;
+}
+
+.todo__text {
+  color: #456990;
+}
+
+.todo__input {
+  color: #456990;
+  opacity: .7;
+}
+
+.list__checkboxInput {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.list__checkboxInput+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  height: 35px;
+}
+
+.list__checkboxInput+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.list__checkboxInput:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+
+.list__checkboxInput:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+
+.list__checkboxInput:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.list__checkboxInput:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+
+.list__checkboxInput:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #028090;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.list__checkboxInput:disabled+label::before {
+  background-color: #e9ecef;
+}
+
+.list__checkbox {
+  position: relative;
+}
+
+.about__text {
+  color: #456990;
+  font-size: 20px;
+}

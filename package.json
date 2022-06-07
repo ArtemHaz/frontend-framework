@@ -1,0 +1,22 @@
+{
+  "name": "custom_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "build": "cp -R src/* dist && babel src/app.js --out-dir dist",
+    "start": "static -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'",
+    "restart": "cp -R src/* dist && babel src/app.js --out-dir dist && static -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.12",
+    "@babel/plugin-syntax-jsx": "^7.17.12",
+    "@babel/plugin-transform-react-jsx": "^7.17.12",
+    "node-static": "^0.7.11"
+  }
+}
